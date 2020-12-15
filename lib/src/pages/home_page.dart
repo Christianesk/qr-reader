@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/src/pages/address_page.dart';
 import 'package:qr_reader/src/pages/historial_maps_page.dart';
+import 'package:qr_reader/src/providers/db_provider.dart';
 import 'package:qr_reader/src/providers/ui_provider.dart';
 import 'package:qr_reader/src/widgets/custom_navigation-bar.dart';
 import 'package:qr_reader/src/widgets/scan_button.dart';
@@ -36,6 +37,9 @@ class _HomePageBody extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
 
     final currenteIndex = uiProvider.selectedMenuOpt;
+
+    final tempScan = new ScanModel(value: 'http://stkngesk.tech');
+    DBProvider.db.newScan(tempScan);
 
     switch (currenteIndex) {
       case 0:
