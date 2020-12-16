@@ -38,6 +38,8 @@ class _HomePageBody extends StatelessWidget {
 
     final currenteIndex = uiProvider.selectedMenuOpt;
 
+    DBProvider.db.deleteAllScans().then(print);
+
     switch (currenteIndex) {
       case 0:
         return HistorialMapsPage();
