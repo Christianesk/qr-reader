@@ -38,9 +38,6 @@ class _HomePageBody extends StatelessWidget {
 
     final currenteIndex = uiProvider.selectedMenuOpt;
 
-    final tempScan = new ScanModel(value: 'http://stkngesk.tech');
-    DBProvider.db.newScan(tempScan);
-
     switch (currenteIndex) {
       case 0:
         return HistorialMapsPage();
