@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qr_reader/src/pages/address_page.dart';
-import 'package:qr_reader/src/pages/historial_maps_page.dart';
-import 'package:qr_reader/src/providers/db_provider.dart';
 import 'package:qr_reader/src/providers/scan_list_provider.dart';
 import 'package:qr_reader/src/providers/ui_provider.dart';
 import 'package:qr_reader/src/widgets/custom_navigation-bar.dart';
 import 'package:qr_reader/src/widgets/scan_button.dart';
+import 'package:qr_reader/src/widgets/scan_tiles.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -48,12 +46,18 @@ class _HomePageBody extends StatelessWidget {
     switch (currenteIndex) {
       case 0:
         scanListProvider.loadScansByType('geo');
-        return HistorialMapsPage();
+        return ScanTiles(
+          type: 'geo'
+        );
       case 1:
         scanListProvider.loadScansByType('http');
-        return AddressPage();
+        return ScanTiles(
+          type: 'http'
+        );
       default: 
-        return HistorialMapsPage();
+        return ScanTiles(
+          type: 'geo'
+        );
     }
   }
 }

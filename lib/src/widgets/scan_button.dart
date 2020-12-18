@@ -13,11 +13,8 @@ class ScanButton extends StatelessWidget {
         String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode('#3D8BEF','Cancel',false,ScanMode.QR);
 
         final scanListProvider = Provider.of<ScanListProvider>(context, listen: false);
-        
 
         scanListProvider.newScan(barcodeScanRes);
-
-        scanListProvider.newScan('geo:15.25,16.87');
       },
     );
   }

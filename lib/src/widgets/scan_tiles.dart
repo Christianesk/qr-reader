@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qr_reader/src/providers/scan_list_provider.dart';
 
-class HistorialMapsPage extends StatelessWidget {
+class ScanTiles extends StatelessWidget {
+
+  final String type;
+
+  ScanTiles({ @required this.type});
+
   @override
   Widget build(BuildContext context) {
 
@@ -30,7 +35,10 @@ class HistorialMapsPage extends StatelessWidget {
             Provider.of<ScanListProvider>(context,listen: false).deleteScanById(scans[i].id);
           },
           child: ListTile(
-            leading: Icon(Icons.map, color: Theme.of(context).primaryColor),
+            leading: Icon(
+              this.type == 'http'? Icons.home_outlined : Icons.map_outlined, 
+              color: Theme.of(context).primaryColor
+            ),
             title: Text(scans[i].value),
             subtitle: Text(scans[i].id.toString()),
             trailing: Icon(Icons.keyboard_arrow_right, color: Colors.grey),
