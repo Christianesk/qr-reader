@@ -9,7 +9,7 @@ class ScanListProvider extends ChangeNotifier {
   String selectedType = 'http';
 
 
-  newScan(String value) async {
+  Future<ScanModel> newScan(String value) async {
 
     final newScan = new ScanModel(value: value);
 
@@ -22,6 +22,7 @@ class ScanListProvider extends ChangeNotifier {
       notifyListeners();
     }
     
+    return newScan;
   }
 
   loadScans() async{
