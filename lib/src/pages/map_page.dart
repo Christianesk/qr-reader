@@ -13,6 +13,8 @@ class _MapPageState extends State<MapPage> {
 
   Completer<GoogleMapController> _controller = Completer();
 
+  MapType mapType = MapType.normal;
+
   
 
   @override
@@ -60,7 +62,7 @@ class _MapPageState extends State<MapPage> {
       body: GoogleMap(
         zoomControlsEnabled: false,
         myLocationButtonEnabled: false,
-        mapType: MapType.normal,
+        mapType: mapType,
         markers: markers,
         initialCameraPosition: initialPoint,
         onMapCreated: (GoogleMapController controller) {
@@ -70,7 +72,13 @@ class _MapPageState extends State<MapPage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.layers),
         onPressed: () {
-          
+          setState(() {
+            if (mapType == MapType.normal) {
+              mapType = MapType.satellite;
+            }else{
+                mapType = MapType.normal;
+            }
+          });
         },
       ),
     );
